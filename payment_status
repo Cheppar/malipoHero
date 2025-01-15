@@ -1,0 +1,60 @@
+<?php
+// Set the header to ensure the response is in JSON format
+header('Content-Type: application/json');
+
+// Supabase API configuration
+$supabaseUrl = 'https://qivfnspdsrafaxgzzbnj.supabase.co'; // Your Supabase URL
+$supabaseApiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpdmZuc3Bkc3JhZmF4Z3p6Ym5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjA4ODg4MDAsImV4cCI6MjAzNjQ2NDgwMH0.0XQ7L04SU_p5On3sCHPZJBtJDiKsSo2HrgPruphTpTs'; // Your Supabase API Key
+$tableName = 'gaspayments'; // Your table name in Supabase
+
+// Get the `user_reference` from the query parameters
+$user_reference = isset($_GET['user_reference']) ? $_GET['user_reference'] : null;
+
+if (!$user_reference) {
+    echo json_encode(['success' => false, 'message' => 'Missing user_reference parameter']);
+    exit;
+}
+
+// Build the Supabase API endpoint
+$endpoint = $supabaseUrl . '/rest/v1/' . $tableName . '?user_reference=eq.' . $user_reference;
+
+// Initialize cURL to query Supabase
+$ch = curl_init($endpoint);
+
+// Set cURL options for GET request
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Content-Type: application/json',
+    'Authorization: Bearer ' . $supabaseApiKey,
+    'apikey: ' . $supabaseApiKey
+]);
+
+// Execute the cURL request
+$response = curl_exec($ch);
+
+// Check if any error occurred during the cURL request
+if (curl_errno($ch)) {
+    echo json_encode(['success' => false, 'message' => 'Error querying Supabase: ' . curl_error($ch)]);
+    exit;
+}
+
+// Decode the response from Supabase
+$data = json_decode($response, true);
+
+// Close cURL
+curl_close($ch);
+
+// Check if the payment record exists
+if (!empty($data) && is_array($data)) {
+    $payment = $data[0]; // Get the first (and likely only) record
+
+    // Check the `status` field to determine if the payment was successful
+    if ($payment['status'] === true) { // Check for the boolean value true
+        echo json_encode(['success' => true, 'message' => 'Payment verified successfully', 'payment' => $payment]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Payment not yet completed', 'payment' => $payment]);
+    }
+} else {
+    echo json_encode(['success' => false, 'message' => 'Payment not found']);
+}
+?>
