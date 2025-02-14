@@ -3,9 +3,9 @@
 header('Content-Type: application/json');
 
 // Supabase API configuration
-$supabaseUrl = 'https://qivfnspdsrafaxgzzbnj.supabase.co'; // Your Supabase URL
-$supabaseApiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpdmZuc3Bkc3JhZmF4Z3p6Ym5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjA4ODg4MDAsImV4cCI6MjAzNjQ2NDgwMH0.0XQ7L04SU_p5On3sCHPZJBtJDiKsSo2HrgPruphTpTs'; // Your Supabase API Key
-$tableName = 'gaspayments'; // Your table name in Supabase
+$supabaseUrl = 'Your Supabase URL';
+$supabaseApiKey = 'Your supabase key';
+$tableName = 'Your table name in Supabase';
 
 // Get the `user_reference` from the query parameters
 $user_reference = isset($_GET['user_reference']) ? $_GET['user_reference'] : null;
