@@ -39,7 +39,7 @@ if (!empty($inputData)) {
 
     // Supabase API details
     $supabaseUrl = 'replace with supabase URL'; 
-    $supabaseApiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpdmZuc3Bkc3JhZmF4Z3p6Ym5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjA4ODg4MDAsImV4cCI6MjAzNjQ2NDgwMH0.0XQ7L04SU_p5On3sCHPZJBtJDiKsSo2HrgPruphTpTs'; 
+    $supabaseApiKey = 'replace with supabase key'; 
     $tableName = 'your_table_name';
     $endpoint = $supabaseUrl . '/rest/v1/' . $tableName . '?transaction_reference=eq.' . $transactionReference;
 
