@@ -38,9 +38,9 @@ if (!empty($inputData)) {
     $transactionReference = $decodedData['response']['Transaction_Reference'];
 
     // Supabase API details
-    $supabaseUrl = 'https://qivfnspdsrafaxgzzbnj.supabase.co'; 
+    $supabaseUrl = 'replace with supabase URL'; 
     $supabaseApiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpdmZuc3Bkc3JhZmF4Z3p6Ym5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjA4ODg4MDAsImV4cCI6MjAzNjQ2NDgwMH0.0XQ7L04SU_p5On3sCHPZJBtJDiKsSo2HrgPruphTpTs'; 
-    $tableName = 'gaspayments';
+    $tableName = 'your_table_name';
     $endpoint = $supabaseUrl . '/rest/v1/' . $tableName . '?transaction_reference=eq.' . $transactionReference;
 
     // Initialize cURL to check if the record already exists
