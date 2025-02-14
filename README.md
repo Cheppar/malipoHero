@@ -1,5 +1,6 @@
 # malipoHero
 - A plug-and-play solution for payment/subscriptions using MPESA.
+- fork it please 
 
 ### Instructions
 - Payment integration with PayHero platform.
