@@ -21,8 +21,8 @@ $phoneNumber = $inputData['phone_number'];
 $externalReference = $inputData['external_reference'];
 
 // Your API credentials
-$apiUsername = '4iZr6EreOOqyXgIrJwCK';
-$apiPassword = '1b5hz4SMjpIAkKa3qUVEtCGfovmPCYcuzgFilyCQ';
+$apiUsername = 'replace with your username between quotes';
+$apiPassword = 'replace with your password between quotes';
 
 // Create the Basic Auth token
 $credentials = base64_encode($apiUsername . ':' . $apiPassword);
@@ -45,7 +45,7 @@ curl_setopt_array($curl, array(
         "external_reference" => $externalReference,
         "provider" => "m-pesa",
         "channel_id"=> 1049, 
-        "callback_url"=> "https://cheppar.co.ke/cheppar/callback.php",
+        "callback_url"=> "https://freeman.co.ke/callback.php",
     )),
     CURLOPT_HTTPHEADER => array(
         'Content-Type: application/json',
