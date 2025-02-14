@@ -45,7 +45,7 @@ curl_setopt_array($curl, array(
         "external_reference" => $externalReference,
         "provider" => "m-pesa",
         "channel_id"=> 1049, 
-        "callback_url"=> "https://freeman.co.ke/callback.php",
+        "callback_url"=> "https://example.com/callback.php",
     )),
     CURLOPT_HTTPHEADER => array(
         'Content-Type: application/json',
